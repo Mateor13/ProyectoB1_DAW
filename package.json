@@ -2,13 +2,20 @@
   "name": "proyecto",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start":"node src/index.js",
+    "start": "node src/index.js",
     "dev": "node --watch src/index.js",
     "bdd": "npx json-server --watch db.json --port 4000"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.21.1",
+    "json-server": "^1.0.0-beta.3",
+    "uuid": "^10.0.0"
+  }
 }
