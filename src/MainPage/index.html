@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valorant Agents</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="headerTitle">
+            <h1>Valorant WIKI</h1>
+        </div>
+        <div class="navigator-container">
+            <nav class="navigator">
+                <a href="#Agents">Agentes</a>
+                <a href="#Maps">Mapas</a>
+                <a href="#GameModes">Modos de Juego</a>
+                <a href="#controladores">Controladores</a>
+                <a href="#iniciadores">Iniciadores</a>
+            </nav>
+        </div>
+    </header>
+    <div id="Agents">
+        <h2>Agentes de Valorant</h2>
+        <div id="role-filters">
+            <button class="role-button" onclick="filterAgents('Duelista')">Duelista</button>
+            <button class="role-button" onclick="filterAgents('Iniciador')">Iniciador</button>
+            <button class="role-button" onclick="filterAgents('Controlador')">Controlador</button>
+            <button class="role-button" onclick="filterAgents('Centinela')">Centinela</button>
+            <button class="role-button" onclick="resetFilter()">Todos</button>
+        </div>
+
+        <!-- Contenedor de las cards de los agentes -->
+        <div id="list-agents">
+            <!-- Aquí se agregarán dinámicamente las tarjetas -->
+        </div>
+
+        <!-- Modal para mostrar la información del agente -->
+        <div id="agentModal">
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="Maps">
+        <h2>Mapas de Valorant</h2>
+        <div id="list-maps"></div>
+        <div id="agentModal" class="modal">
+            <span class="close" onclick="closeModal()">×</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    
+    <div id="GameModes">
+        <h2>Modos de Juego de Valorant</h2>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2024 Valorant Agents</p>
+    </footer>
+
+    <script src="./assets/js/agents.js"></script>
+    <script src="./assets/js/maps.js"></script>
+    <script src="./assets/js/gameModes.js"></script>
+</body>
+
+</html>
