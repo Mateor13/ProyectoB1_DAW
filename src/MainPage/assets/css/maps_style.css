@@ -1,0 +1,91 @@
+/* Estilo para el contenedor de mapas */
+#list-maps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#Maps h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Estilo para las tarjetas de mapas */
+.map-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    width: 200px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.map-card:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para las imágenes de los mapas en las tarjetas */
+.map-image {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilo para el modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Mantener el modal en posición */
+    z-index: 1000; /* Enfrente de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    overflow: auto; /* Desplazamiento si es necesario */
+    background-color: rgb(0, 0, 0); /* Fondo negro */
+    background-color: rgba(0, 0, 0, 0.9); /* Fondo negro con transparencia */
+}
+
+/* Estilo del contenido del modal */
+.modal-content {
+    background-color: #333; /* Fondo del modal */
+    margin: 15% auto; /* Margen superior y centrado */
+    padding: 20px; /* Espaciado interno */
+    border: 1px solid #888; /* Borde */
+    width: 80%; /* Ancho del modal */
+    max-height: 80%; /* Limitar la altura */
+    overflow-y: auto; /* Scroll si es necesario */
+    position: relative; /* Posicionamiento relativo para el contenido */
+}
+
+.modal-image,
+.map-list-icon,
+.map-list-icon-tall,
+.map-premier-bg {
+    max-width: 100%; /* Mantener dentro del contenedor */
+    height: auto; /* Mantener la proporción */
+}
+
+.map-images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espaciado entre las imágenes */
+}
+
+
+/* Estilo del cierre del modal */
+.close {
+    color: #aaa; /* Color del texto */
+    float: right; /* A la derecha */
+    font-size: 28px; /* Tamaño */
+    font-weight: bold; /* Negrita */
+}
+
+.close:hover,
+.close:focus {
+    color: white; /* Cambiar color al pasar el mouse */
+    text-decoration: none; /* Sin subrayado */
+    cursor: pointer; /* Cambiar cursor */
+}
