@@ -110,3 +110,16 @@ const initializeApp = async () => {
 
 // Llamar a la función cuando la ventana se carga
 window.onload = initializeApp;
+
+export {
+    fetchAgents,
+    displayAgents,
+    filterAgents,
+    resetFilter,
+    showModal,
+    initializeApp
+};
+
+window.filterAgents = filterAgents;
+window.resetFilter = resetFilter;
+window.showModal = showModal
