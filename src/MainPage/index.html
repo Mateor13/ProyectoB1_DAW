@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <link rel="stylesheet" href="./assets/css/agents_style.css">
     <link rel="stylesheet" href="./assets/css/maps_style.css">
     <link rel="stylesheet" href="./assets/css/games_style.css">
+    <link rel="stylesheet" href="./assets/css/weapon_style.css">
 </head>
+
 <body>
     <!-- Encabezado -->
     <header>
@@ -21,7 +24,7 @@
                 <a href="#Agents" class="nav-link">Agentes</a>
                 <a href="#Maps" class="nav-link">Mapas</a>
                 <a href="#GameModes" class="nav-link">Modos de Juego</a>
-                <a href="#controladores" class="nav-link">Controladores</a>
+                <a href="#Weapons" class="nav-link">Armas</a>
                 <a href="#iniciadores" class="nav-link">Iniciadores</a>
             </nav>
         </div>
@@ -55,12 +58,19 @@
             <div id="modal-body"></div>
         </div>
     </div>
-    
+
     <div id="GameModes">
         <h2>Modos de Juego de Valorant</h2>
     </div>
 
-    
+    <div id="Weapons">
+        <div id="list-weapons"></div>
+        <div id="weaponModal" class="modal"></div>
+        <div id="modal-body"></div>
+    </div>
+
+    </div>
+
     <!-- Pie de página -->
     <footer>
         <p>&copy; 2024 Valorant WIKI</p>
@@ -68,4 +78,5 @@
 
     <script type="module" src="./index.js"></script>
 </body>
+
 </html>

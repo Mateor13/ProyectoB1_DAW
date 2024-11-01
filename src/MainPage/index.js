@@ -1,13 +1,16 @@
-import {filterAgents,resetFilter,initializeApp } from './assets/js/agents.js';
+import { filterAgents, resetFilter} from './assets/js/agents.js';
 import { fetchMaps} from './assets/js/maps.js';
-import {fetchGameModes} from './assets/js/gameModes.js';
+import { fetchGameModes } from './assets/js/gameModes.js';
+import { fetchWeapons} from './assets/js/weapons.js';
 
+document.addEventListener('DOMContentLoaded', async () => {
+    // Carga los mapas y los modos de juego
+    await fetchMaps();
+    await fetchGameModes();
+    await fetchWeapons();
+});
 
-//* Agents
-// Llama a initializeApp para inicializar la aplicación
-window.onload = initializeApp;
-
-// Puedes usar las otras funciones cuando las necesites, por ejemplo:
+// Filtrar agentes por rol cuando cambie la selección
 document.getElementById('role-filters').addEventListener('change', (e) => {
     const role = e.target.value;
     if (role === 'all') {
@@ -15,14 +18,4 @@ document.getElementById('role-filters').addEventListener('change', (e) => {
     } else {
         filterAgents(role);
     }
-});
-
-//* Maps
-
-document.addEventListener('DOMContentLoaded', async () => {
-    await fetchMaps(); // Carga los mapas al iniciar
-});
-
-document.addEventListener('DOMContentLoaded', async () => {
-    await fetchGameModes(); // Carga los modos de jugo al iniciar
 });

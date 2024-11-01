@@ -1,22 +1,19 @@
-// maps.js
-const allMaps = []; // Variable para almacenar todos los mapas
+let allMaps = []; // Almacenamos todos los mapas
 
-export const fetchMaps = async () => {
-    const apiUrl = 'https://valorant-api.com/v1/maps';
+const fetchMaps = async () => {
     try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
+        const response = await fetch('https://valorant-api.com/v1/maps');
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        
         const data = await response.json();
-        allMaps.push(...data.data); // Guarda todos los mapas
-        await displayMaps(allMaps); // Muestra todos los mapas al inicio
+        allMaps = data.data;
+        displayMaps(allMaps); // Muestra todos los mapas al inicio
     } catch (error) {
         console.error('Error fetching maps:', error);
     }
 };
 
-export const displayMaps = async (maps) => {
+const displayMaps = (maps) => {
     const mapsContainer = document.getElementById('list-maps');
     mapsContainer.innerHTML = '';
 
@@ -24,36 +21,25 @@ export const displayMaps = async (maps) => {
     const seenNames = new Set();
 
     maps.forEach(map => {
-        if (seenNames.has(map.displayName) || map.displayName === "Basic Training") {
-            return;
-        }
+        if (seenNames.has(map.displayName) || map.displayName === "Basic Training") return;
         seenNames.add(map.displayName);
 
         const mapCard = document.createElement('div');
         mapCard.classList.add('map-card');
+        mapCard.innerHTML = `
+            <img data-src="${map.splash}" alt="${map.displayName} splash image" class="map-image lazy-load">
+            <h3>${map.displayName}</h3>
+        `;
 
-        const mapImage = document.createElement('img');
-        mapImage.dataset.src = map.splash; // Cambia src a data-src para carga diferida
-        mapImage.alt = `${map.displayName} splash image`;
-        mapImage.classList.add('map-image', 'lazy-load');
-
-
-        const mapName = document.createElement('h3');
-        mapName.textContent = map.displayName;
-
-        mapCard.addEventListener('click', async () => await showMapDetails(map));
-
-        mapCard.appendChild(mapImage);
-        mapCard.appendChild(mapName);
+        mapCard.addEventListener('click', () => showMapDetails(map));
         fragment.appendChild(mapCard);
     });
 
     mapsContainer.appendChild(fragment);
-    await initializeLazyLoad();
+    initializeLazyLoad(); // Configura carga diferida de imágenes
 };
 
-
-export const showMapDetails = async (map) => {
+const showMapDetails = (map) => {
     const modal = document.getElementById('agentModal');
     const modalBody = document.getElementById('modal-body');
     modal.style.display = 'block';
@@ -63,44 +49,26 @@ export const showMapDetails = async (map) => {
             <span class="close-button" id="modal-close">&times;</span>
             <h2>${map.displayName}</h2>
             <div class="banner-container">
-                <img src="${map.listViewIcon}" alt="${map.displayName} list view icon" class="banner-image" onerror="this.style.display='none';">
+                <img data-src="${map.listViewIcon}" alt="${map.displayName} list view icon" class="banner-image lazy-modal-load" onerror="this.style.display='none';">
             </div>
             <p>Descripción: ${map.tacticalDescription || 'No disponible'}</p>
             <div class="map-images-container">
-                <img src="${map.displayIcon}" alt="${map.displayName} icon" class="modal-image" onerror="this.style.display='none';">
-                <img src="${map.listViewIconTall}" alt="${map.displayName} list view icon tall" class="map-list-icon-tall" onerror="this.style.display='none';">
-                <img src="${map.premierBackgroundImage}" alt="${map.displayName} premier background" class="map-premier-bg" onerror="this.style.display='none';">
+                ${['displayIcon', 'listViewIconTall', 'premierBackgroundImage'].map(img => 
+                    map[img] ? `<img data-src="${map[img]}" alt="${map.displayName} ${img}" class="map-image lazy-modal-load" onerror="this.style.display='none';">` : ''
+                ).join('')}
             </div>
         </div>
     `;
 
-    // Se muestra el contenido de las imágenes de manera similar a lo que ya tienes.
-    modalBody.querySelector('.map-images-container').style.display = 'flex';
-    modalBody.querySelector('.map-images-container').style.flexDirection = 'column';
-    modalBody.querySelector('.map-images-container').style.alignItems = 'center';
+    const modalCloseButton = document.getElementById('modal-close');
+    modalCloseButton.onclick = closeModal;
 
-    const banner = modalBody.querySelector('.banner-container');
-    banner.style.display = 'flex';
-    banner.style.justifyContent = 'center';
-    banner.style.marginBottom = '20px';
-    banner.querySelector('.banner-image').style.maxWidth = '100%';
-    banner.querySelector('.banner-image').style.borderRadius = '8px';
-
-    document.getElementById('modal-close').addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+    // Inicializa lazy loading para las imágenes del modal
+    initializeLazyLoadModal();
 };
 
-
-// Lazy load images
-export const initializeLazyLoad = async () => { // Cambia el nombre de la función aquí
+const initializeLazyLoad = () => { 
     const lazyImages = document.querySelectorAll('.lazy-load');
-    const config = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -110,26 +78,55 @@ export const initializeLazyLoad = async () => { // Cambia el nombre de la funci�
                 observer.unobserve(img); // Deja de observar esta imagen
             }
         });
-    }, config);
+    }, { rootMargin: '0px', threshold: 0.1 });
 
-    lazyImages.forEach(img => {
-        observer.observe(img);
-    });
+    lazyImages.forEach(img => observer.observe(img));
 };
 
-export const closeModal = () => {
+// Lazy loading para las imágenes del modal
+const initializeLazyLoadModal = () => {
+    const lazyModalImages = document.querySelectorAll('.lazy-modal-load');
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src; // Carga la imagen
+                img.classList.remove('lazy-modal-load'); // Elimina la clase de carga diferida
+                observer.unobserve(img); // Deja de observar esta imagen
+            }
+        });
+    }, { rootMargin: '0px', threshold: 0.1 });
+
+    lazyModalImages.forEach(img => observer.observe(img));
+};
+
+// Pre-carga de imágenes para mejorar el rendimiento al abrir el modal
+const preloadImage = (url) => {
+    const img = new Image();
+    img.src = url;
+};
+
+// Pre-cargar imágenes importantes al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    fetchMaps().then(() => {
+        allMaps.forEach(map => {
+            if (map.stylizedBackgroundImage) preloadImage(map.stylizedBackgroundImage);
+            if (map.displayIcon) preloadImage(map.displayIcon);
+            if (map.listViewIcon) preloadImage(map.listViewIcon);
+        });
+    });
+});
+
+const closeModal = () => {
     const modal = document.getElementById('agentModal');
     modal.style.display = 'none';
 };
 
+// Cierra el modal al hacer clic fuera de él
 window.addEventListener('click', (event) => {
-    const modal = document.getElementById('agentModal');
-    if (event.target === modal) {
-        closeModal();
-    }
+    if (event.target === document.getElementById('agentModal')) closeModal();
 });
 
-// Cargar los mapas al cargar la página
-document.addEventListener('DOMContentLoaded', async () => {
-    await fetchMaps();
-});
+export {
+    fetchMaps
+};

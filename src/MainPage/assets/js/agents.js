@@ -1,27 +1,25 @@
-let allAgents = []; // Variable para almacenar todos los agentes
+let allAgents = [];
 
 const fetchAgents = async () => {
     try {
-        const response = await fetch('https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=es-ES');
+        const response = await fetch('https://valorant-api.com/v1/agents?isPlayableCharacter=true&language=es-MX');
         const data = await response.json();
-        allAgents = data.data; // Guarda todos los agentes
-        await displayAgents(allAgents); // Muestra todos los agentes al inicio
+        allAgents = data.data;
+        displayAgents(allAgents); // Muestra todos los agentes al inicio
     } catch (error) {
         console.error('Error fetching agents:', error);
     }
 };
 
-// Function to display agents in cards
-const displayAgents = async (agents) => {
+const displayAgents = (agents) => {
     const listAgents = document.getElementById('list-agents');
-    listAgents.innerHTML = ''; // Clear previous content
+    listAgents.innerHTML = '';
 
     const fragment = document.createDocumentFragment();
 
     agents.forEach(agent => {
         const card = document.createElement('div');
         card.classList.add('card');
-
         card.innerHTML = `
             <img class="card-img-top lazy-load" data-src="${agent.displayIcon}" alt="${agent.displayName}">
             <div class="card-body">
@@ -33,93 +31,78 @@ const displayAgents = async (agents) => {
         fragment.appendChild(card);
     });
 
-    // Agregar todas las tarjetas al contenedor a la vez
     listAgents.appendChild(fragment);
-    await lazyLoadImages(); // Iniciar carga diferida de imágenes
+    lazyLoadImages(); // Carga diferida de imágenes
 };
 
-// Function to filter agents by role
-const filterAgents = async (role) => {
+const filterAgents = (role) => {
     const filteredAgents = allAgents.filter(agent => agent.role.displayName === role);
-    await displayAgents(filteredAgents);
+    displayAgents(filteredAgents);
 };
 
-// Function to reset the filter and show all agents
-const resetFilter = async () => {
-    await displayAgents(allAgents);
-};
+const resetFilter = () => displayAgents(allAgents);
 
-// Function to display modal with agent information
 const showModal = (agent) => {
     const modal = document.getElementById('agentModal');
     const modalBody = document.getElementById('modal-body');
     modal.style.display = 'block';
 
     modalBody.innerHTML = `
-    <div class="modal-content">
-        <span class="close-button" id="modal-close">&times;</span>
-        <img style="background-image: url('${agent.background}');background-size: cover; background-position: center;" src="${agent.fullPortrait}" alt="${agent.displayName}" class="modal-image">
-        <h2 class="agent-name">${agent.displayName}</h2>
-        <p class="agent-description">${agent.description}</p>
-        <h4 class="agent-role">Rol: ${agent.role.displayName}</h4>
-        <p class="role-description">${agent.role.description}</p>
-        <h5 class="agent-abilities">Habilidades:</h5>
-        <ul class="ability-list">
-            ${agent.abilities.map(ability => `
-                <li><strong>${ability.displayName}</strong>: ${ability.description}</li><br>
-            `).join('')}
-        </ul>
-    </div>
+        <div class="modal-content">
+            <span class="close-button" id="modal-close">&times;</span>
+            <img style="background-image: url('${agent.background}'); background-size: cover; background-position: center;" 
+                 data-full-src="${agent.fullPortrait}" 
+                 alt="${agent.displayName}" 
+                 class="modal-image" 
+                 src="placeholder.jpg"> <!-- Placeholder aquí -->
+            <h2 class="agent-name">${agent.displayName}</h2>
+            <p class="agent-description">${agent.description}</p>
+            <h4 class="agent-role">Rol: ${agent.role.displayName}</h4>
+            <p class="role-description">${agent.role.description}</p>
+            <h5 class="agent-abilities">Habilidades:</h5>
+            <ul class="ability-list">
+                ${agent.abilities.map(ability => `<li><strong>${ability.displayName}</strong>: ${ability.description}</li><br>`).join('')}
+            </ul>
+        </div>
     `;
 
-    // Add event listener to close button
-    document.getElementById('modal-close').addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+    // Cambia la imagen del placeholder a la imagen completa cuando el modal se muestre
+    const fullImage = modalBody.querySelector('.modal-image');
+    fullImage.onload = () => fullImage.classList.add('loaded'); // Clase para el estilo
+    fullImage.src = fullImage.getAttribute('data-full-src');
+
+    // Cierra el modal al hacer clic en el botón de cierre
+    document.getElementById('modal-close').onclick = () => modal.style.display = 'none';
 };
 
-// Lazy load images
-const lazyLoadImages = async () => {
+const lazyLoadImages = () => {
     const lazyImages = document.querySelectorAll('.lazy-load');
-    const config = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                img.src = img.dataset.src; // Carga la imagen
-                img.classList.remove('lazy-load'); // Elimina la clase de carga diferida
-                observer.unobserve(img); // Deja de observar esta imagen
+                img.src = img.dataset.src;
+                img.classList.remove('lazy-load');
+                observer.unobserve(img);
             }
         });
-    }, config);
+    }, { rootMargin: '0px', threshold: 0.1 });
 
-    lazyImages.forEach(img => {
-        observer.observe(img);
-    });
+    lazyImages.forEach(img => observer.observe(img));
 };
 
-// Fetch and display agents when the page loads
-const initializeApp = async () => {
-    await fetchAgents(); // Esta llamada asegura que todos los agentes se carguen al inicio
-};
-
-// Llamar a la función cuando la ventana se carga
-window.onload = initializeApp;
+// Inicia la carga de agentes al cargar la página
+window.onload = fetchAgents;
 
 export {
     fetchAgents,
     displayAgents,
     filterAgents,
     resetFilter,
-    showModal,
-    initializeApp
+    showModal
 };
 
+// Asignaciones globales para que las funciones puedan ser usadas en otros scripts o HTML
 window.filterAgents = filterAgents;
 window.resetFilter = resetFilter;
-window.showModal = showModal
+window.showModal = showModal;

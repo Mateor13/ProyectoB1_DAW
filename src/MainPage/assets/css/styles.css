@@ -75,7 +75,7 @@ header {
 }
 
 /* Asegura que el contenido principal tenga un espacio suficiente */
-#Agents, #Maps, #GameModes {
+#Agents, #Maps, #GameModes, #Weapons {
     padding-left: 225px; /* Añade espacio a la izquierda para evitar solapamiento */
     box-sizing: border-box; /* Asegura que el padding no aumente el ancho total */
 }

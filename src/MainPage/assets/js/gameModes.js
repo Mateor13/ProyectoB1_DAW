@@ -1,7 +1,7 @@
 // Función para obtener y mostrar los modos de juego
 export async function fetchGameModes() {
     try {
-        const response = await fetch('https://valorant-api.com/v1/gamemodes?language=es-ES');
+        const response = await fetch('https://valorant-api.com/v1/gamemodes?language=es-MX');
         const data = await response.json();
 
         // Verificamos que la respuesta tenga datos
