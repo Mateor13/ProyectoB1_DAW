@@ -1,4 +1,6 @@
 /* Estilo para el contenedor de mapas */
+
+
 #list-maps {
     display: flex;
     flex-wrap: wrap;

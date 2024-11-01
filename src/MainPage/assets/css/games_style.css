@@ -5,7 +5,7 @@
     justify-content: center;
     padding: 20px;
     gap: 20px;
-    padding-left: 220px; /* Alineación con la barra de navegación */
+    padding-left: 225px;
     box-sizing: border-box; /* Para asegurar que el padding no aumente el ancho total */
 }
 
