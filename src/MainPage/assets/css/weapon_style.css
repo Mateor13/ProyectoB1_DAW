@@ -1,0 +1,70 @@
+/* Estilo para el contenedor de armas */
+#list-weapons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+#Weapons h2 {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+/* Estilo para las tarjetas de armas */
+.weapon-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    width: 200px;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.2s;
+    background-color: #444; /* Fondo de la tarjeta */
+    color: #fff; /* Color del texto */
+}
+
+.weapon-card:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo para las imágenes de las armas en las tarjetas */
+.weapon-image {
+    width: 100%;
+    height: auto;
+}
+
+/* Estilo para el nombre de la arma */
+.weapon-card h3 {
+    color: #ff4757; /* Cambia el color del nombre de la arma */
+}
+
+
+.weapon-images-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espaciado entre las imágenes */
+}
+
+
+.close:hover,
+.close:focus {
+    color: white; /* Cambiar color al pasar el mouse */
+    text-decoration: none; /* Sin subrayado */
+    cursor: pointer; /* Cambiar cursor */
+}
+
+/* Estilo para los detalles adicionales de las armas */
+.weapon-detail {
+    color: #fff; /* Color del texto */
+    margin-top: 10px; /* Espaciado superior */
+}
+
+.weapon-stat {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0; /* Espaciado entre estadísticas */
+}
