@@ -75,7 +75,7 @@ header {
 }
 
 /* Asegura que el contenido principal tenga un espacio suficiente */
-#Agents, #Maps, #GameModes , #Weapons, #Bundles {
+#Agents, #Maps, #GameModes, #Weapons, #Bundles {
     padding-left: 225px; /* Añade espacio a la izquierda para evitar solapamiento */
     box-sizing: border-box; /* Asegura que el padding no aumente el ancho total */
 }
@@ -88,4 +88,26 @@ footer {
     width: calc(100% - 200px); /* Ajusta el ancho restando el ancho de la barra de navegación */
     margin-left: 170px; /* Espacio para la barra de navegación */
     color: white;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    /* Estilo del encabezado */
+    header {
+        width: 100%; /* El encabezado ocupa todo el ancho */
+        margin-left: 0; /* Sin margen a la izquierda */
+    }
+
+    /* Ajustes para la barra de navegación */
+    .navigator-container {
+        width: 100%; /* La barra de navegación ocupa todo el ancho */
+        height: auto; /* Altura automática */
+        position: relative; /* Cambia la posición a relativa para que se despliegue normalmente */
+        box-shadow: none; /* Sin sombra */
+    }
+
+    /* Estilo del contenido principal */
+    #Agents, #Maps, #GameModes, #Weapons, #Bundles {
+        padding-left: 0; /* Sin padding a la izquierda */
+    }
 }

@@ -5,7 +5,7 @@
     justify-content: center;
     padding: 20px;
     gap: 20px;
-    padding-left: 225px;
+    padding-left: 225px; /* Puede ser ajustado o eliminado para mejor responsividad */
     box-sizing: border-box; /* Para asegurar que el padding no aumente el ancho total */
 }
 
@@ -16,14 +16,13 @@
     color: #fff;
 }
 
-
 /* Estilos específicos de las tarjetas de GameModes */
 .game-mode {
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    width: 250px;
+    width: 250px; /* Ancho fijo para pantallas grandes */
     background-color: #444;
     color: #fff; /* Texto en blanco para que sea visible sobre fondo oscuro */
     transition: transform 0.2s;
@@ -54,4 +53,31 @@
     font-size: 0.9em;
     line-height: 1.4;
     margin: 5px 0;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    #GameModes {
+        padding-left: 0; /* Eliminar el padding izquierdo en pantallas pequeñas */
+    }
+
+    .game-mode {
+        width: 90%; /* Ancho completo en móviles */
+        margin: 10px 0; /* Espaciado vertical entre tarjetas */
+    }
+}
+
+@media (max-width: 480px) {
+    .game-mode {
+        width: 100%; /* Ancho completo en pantallas más pequeñas */
+        padding: 10px; /* Menor padding para mejorar el espacio */
+    }
+
+    .game-mode h3 {
+        font-size: 1.2em; /* Reducir tamaño del título */
+    }
+
+    .game-mode p {
+        font-size: 0.8em; /* Reducir tamaño del texto descriptivo */
+    }
 }

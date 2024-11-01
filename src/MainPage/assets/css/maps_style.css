@@ -1,10 +1,8 @@
 /* Estilo para el contenedor de mapas */
-
-
 #list-maps {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-around; /* Espacio alrededor de las tarjetas */
 }
 
 #Maps h2 {
@@ -19,7 +17,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     margin: 10px;
-    width: 200px;
+    width: 200px; /* Ancho fijo de la tarjeta */
     cursor: pointer;
     text-align: center;
     transition: transform 0.2s;
@@ -71,11 +69,10 @@
 
 .map-images-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Coloca imágenes en columna */
     align-items: center;
     gap: 10px; /* Espaciado entre las imágenes */
 }
-
 
 /* Estilo del cierre del modal */
 .close {
@@ -90,4 +87,35 @@
     color: white; /* Cambiar color al pasar el mouse */
     text-decoration: none; /* Sin subrayado */
     cursor: pointer; /* Cambiar cursor */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .map-card {
+        width: 90%; /* Ancho completo en móviles */
+        margin: 10px 0; /* Espaciado vertical entre tarjetas */
+    }
+
+    #list-maps {
+        flex-direction: column; /* Colocar tarjetas verticalmente en móviles */
+        align-items: center; /* Centrar las tarjetas */
+    }
+
+    .modal-content {
+        width: 95%; /* Ampliar el ancho del modal en móviles */
+    }
+}
+
+@media (max-width: 480px) {
+    .map-card {
+        width: 100%; /* Ancho completo en pantallas más pequeñas */
+    }
+
+    .modal-content {
+        padding: 15px; /* Espaciado interno menor */
+    }
+
+    .close {
+        font-size: 24px; /* Tamaño de texto menor para el botón de cerrar */
+    }
 }

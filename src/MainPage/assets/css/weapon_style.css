@@ -18,7 +18,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     margin: 10px;
-    width: 200px;
+    width: 200px; /* Ancho fijo para pantallas grandes */
     cursor: pointer;
     text-align: center;
     transition: transform 0.2s;
@@ -41,20 +41,12 @@
     color: #ff4757; /* Cambia el color del nombre de la arma */
 }
 
-
+/* Estilo para el contenedor de imágenes */
 .weapon-images-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px; /* Espaciado entre las imágenes */
-}
-
-
-.close:hover,
-.close:focus {
-    color: white; /* Cambiar color al pasar el mouse */
-    text-decoration: none; /* Sin subrayado */
-    cursor: pointer; /* Cambiar cursor */
 }
 
 /* Estilo para los detalles adicionales de las armas */
@@ -67,4 +59,32 @@
     display: flex;
     justify-content: space-between;
     margin: 5px 0; /* Espaciado entre estadísticas */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    #list-weapons {
+        justify-content: center; /* Centrar tarjetas en pantallas más pequeñas */
+    }
+
+    .weapon-card {
+        width: 90%; /* Ancho completo en móviles */
+        margin: 10px 0; /* Espaciado vertical entre tarjetas */
+    }
+}
+
+@media (max-width: 480px) {
+    .weapon-card {
+        width: 100%; /* Ancho completo en pantallas más pequeñas */
+        padding: 10px; /* Menor padding para mejorar el espacio */
+    }
+
+    .weapon-card h3 {
+        font-size: 1.2em; /* Reducir tamaño del título */
+    }
+
+    .weapon-detail,
+    .weapon-stat {
+        font-size: 0.9em; /* Reducir tamaño de texto en detalles y estadísticas */
+    }
 }

@@ -1,16 +1,14 @@
 /* Contenedor principal de Bundles */
-
-#Bundles{
-    padding-left: 225px;
+#Bundles {
+    padding-left: 225px; /* Ajusta este valor según el diseño deseado */
 }
 
-#Bundles h2{
+#Bundles h2 {
     width: 100%;
     text-align: center;
     margin-bottom: 20px;
     color: #fff;
 }
-
 
 #bundles-container {
     display: flex;
@@ -18,13 +16,6 @@
     justify-content: center;
     padding: 20px;
     gap: 20px;
-}
-
-#bundles-container h2 {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #fff;
 }
 
 /* Estilos específicos de las tarjetas de Bundles */
@@ -64,4 +55,31 @@
     font-size: 0.9em;
     line-height: 1.4;
     margin: 5px 0;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    #Bundles {
+        padding-left: 15px; /* Reducir padding en pantallas más pequeñas */
+    }
+
+    .bundle-card {
+        width: 90%; /* Ancho completo en móviles */
+        margin: 10px 0; /* Espaciado vertical entre tarjetas */
+    }
+}
+
+@media (max-width: 480px) {
+    .bundle-card {
+        width: 100%; /* Ancho completo en pantallas pequeñas */
+        padding: 10px; /* Menor padding para mejorar el espacio */
+    }
+
+    .bundle-card h3 {
+        font-size: 1.2em; /* Reducir tamaño del título */
+    }
+
+    .bundle-card p {
+        font-size: 0.85em; /* Reducir tamaño de texto en descripciones */
+    }
 }

@@ -7,6 +7,7 @@
     padding: 0 10px; /* Espaciado en los lados */
 }
 
+/* Títulos de sección */
 #Agents h2 {
     width: 100%;
     text-align: center;
@@ -146,7 +147,7 @@
     margin-bottom: 5px; /* Espaciado entre elementos de la lista */
 }
 
-/* Estilo del nombre del agente */
+/* Estilo para el nombre del agente */
 .agent-name {
     font-size: 2.5em; /* Aumenta el tamaño del nombre */
     color: #ff4757; /* Color llamativo para el nombre del agente */
@@ -185,7 +186,6 @@
     padding-left: 20px; /* Espaciado a la izquierda */
 }
 
-/* Estilo de las habilidades */
 .ability-list li {
     margin-bottom: 5px; /* Espaciado entre habilidades */
 }
@@ -209,4 +209,51 @@
 
 .role-button:hover {
     background-color: #ff6b81; /* Color al pasar el mouse */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .card {
+        width: 100%; /* Ancho completo en móviles */
+        margin: 10px 0; /* Espaciado vertical entre cards */
+    }
+
+    #list-agents {
+        flex-direction: column; /* Colocar cards verticalmente en móviles */
+        align-items: center; /* Centra las cards verticalmente */
+    }
+
+    .modal-content {
+        max-width: 90%; /* Ampliar el ancho del modal */
+    }
+}
+
+@media (max-width: 480px) {
+    .card-title {
+        font-size: 1.1em; /* Ajuste del tamaño del título */
+    }
+
+    .card-text {
+        font-size: 0.8em; /* Ajuste de tamaño de texto */
+    }
+
+    .modal-body h2 {
+        font-size: 1.8em; /* Tamaño del título en el modal */
+    }
+
+    .modal-body h4 {
+        font-size: 1.1em; /* Tamaño del subtítulo en el modal */
+    }
+
+    .agent-name {
+        font-size: 2em; /* Tamaño del nombre del agente */
+    }
+
+    .agent-role {
+        font-size: 1.3em; /* Tamaño del rol */
+    }
+
+    .agent-abilities {
+        font-size: 1.3em; /* Tamaño de las habilidades */
+    }
 }
