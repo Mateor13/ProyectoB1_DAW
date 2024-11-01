@@ -33,6 +33,7 @@
     height: auto;
 }
 
+
 /* Estilo para el modal */
 .modal {
     display: none; /* Oculto por defecto */
@@ -57,6 +58,11 @@
     max-height: 80%; /* Limitar la altura */
     overflow-y: auto; /* Scroll si es necesario */
     position: relative; /* Posicionamiento relativo para el contenido */
+}
+
+.banner-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
 }
 
 .modal-image,
