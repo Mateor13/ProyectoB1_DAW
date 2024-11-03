@@ -54,7 +54,7 @@ const showMapDetails = (map) => {
             <p>Descripción: ${map.tacticalDescription || 'No disponible'}</p>
             <div class="map-images-container">
                 ${['displayIcon', 'listViewIconTall', 'premierBackgroundImage'].map(img => 
-                    map[img] ? `<img data-src="${map[img]}" alt="${map.displayName} ${img}" class="map-image lazy-modal-load" onerror="this.style.display='none';">` : ''
+                    map[img] ? `<img data-src="${map[img]}" alt="${map.displayName} ${img}" class="map-image-modal lazy-modal-load" onerror="this.style.display='none';">` : ''
                 ).join('')}
             </div>
         </div>
