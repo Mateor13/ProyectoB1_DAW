@@ -3,7 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* Espacio uniforme entre tarjetas */
+    gap: 20px;
     padding: 10px;
 }
 
@@ -21,12 +21,13 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     margin: 10px;
-    width: 220px; /* Ancho fijo para uniformidad */
-    height: 300px; /* Altura fija para evitar cambios de diseño */
+    width: 220px;
+    height: 300px;
     cursor: pointer;
     text-align: center;
     transition: transform 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden; /* Asegura que el contenido no se desborde */
 }
 
 .map-card:hover {
@@ -36,15 +37,16 @@
 /* Imagen de la tarjeta de mapa */
 .map-image {
     width: 100%;
-    height: 150px; /* Altura fija para evitar CLS */
+    height: 150px;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    object-fit: cover; /* Para mantener la relación de aspecto sin distorsionar */
+    object-fit: cover;
+    overflow: hidden; /* Evitar desbordes */
 }
 
 /* Estilo para el modal */
 .modal {
-    display: none; /* Oculto por defecto */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -52,24 +54,32 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9); /* Fondo negro con transparencia */
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px; /* Asegura espacio alrededor en pantallas pequeñas */
+    box-sizing: border-box; /* Mantiene el contenido dentro del modal */
 }
 
 /* Contenido del modal */
 .modal-content {
     background-color: #333;
-    margin: 8% auto; /* Margen superior menor para centrar */
+    margin: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    max-height: 85%; /* Limitar altura para responsividad */
+    max-width: 600px; /* Tamaño máximo para centrado */
+    max-height: 85%;
     overflow-y: auto;
     position: relative;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
 /* Contenedor para las imágenes en el modal */
 .map-images-container {
+    width: 100%; /* Asegura el ancho completo */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,16 +89,28 @@
 /* Imagen en el modal */
 .modal-image {
     width: 100%;
-    height: 300px; /* Definir altura fija para evitar cambios de diseño */
+    max-height: 400px; /* Altura máxima para evitar distorsión */
     border-radius: 5px;
-    object-fit: cover;
+    object-fit: contain;
 }
+
+/* Imágenes dentro del modal */
+.map-image-modal {
+    width: 100%;
+    max-width: 400px; /* Tamaño máximo para que no exceda el ancho del modal */
+    max-height: 300px; /* Altura máxima para mantener la proporción y evitar que se vea demasiado alta */
+    object-fit: contain; /* Mantiene la proporción de la imagen sin recortarla */
+    border-radius: 8px; /* Añade bordes redondeados para mantener consistencia visual */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra ligera para destacar las imágenes */
+    margin: 10px 0; /* Espacio entre imágenes */
+}
+
 
 /* Iconos adicionales en el modal */
 .map-list-icon,
 .map-list-icon-tall,
 .map-premier-bg {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-radius: 5px;
 }
@@ -112,7 +134,7 @@
 /* Media queries para responsividad */
 @media (max-width: 768px) {
     .map-card {
-        width: 80%; /* Reducir ancho en tabletas */
+        width: 80%;
     }
 
     #list-maps {
@@ -122,13 +144,13 @@
 
     .modal-content {
         width: 90%;
-        padding: 15px; /* Reducir padding en pantallas más pequeñas */
+        padding: 15px;
     }
 }
 
 @media (max-width: 480px) {
     .map-card {
-        width: 100%; /* Ancho completo en pantallas pequeñas */
+        width: 100%;
     }
 
     .modal-content {
@@ -137,6 +159,6 @@
     }
 
     .close {
-        font-size: 24px; /* Tamaño de texto menor en móvil */
+        font-size: 24px;
     }
 }
