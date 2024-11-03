@@ -51,15 +51,15 @@ p{
 }
 
 .Fancy-file_Fancy-file-button {
-    background: #ff4757 url(../img/folder.png) 4px center / 25px no-repeat;
-    border: 1px solid #ff4757;
+    background: #ff6b81 url(../img/folder.png) 4px center / 25px no-repeat;
+    border: 1px solid #ff6b81;
     color: white;
     white-space: nowrap;
     border-radius: 0 4px 4px 0;
     padding: 5px 10px 5px 33px;
 }
 .Fancy-file_Fancy-file-button:hover {
-    background-color: #ff6b81;
+    background-color: #ff4757;
 }
 button {
     background-color: #7289da;
