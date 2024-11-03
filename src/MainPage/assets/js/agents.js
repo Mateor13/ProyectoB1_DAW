@@ -53,7 +53,7 @@ const showModal = (agent) => {
             <img style="background-image: url('${agent.background}'); background-size: cover; background-position: center;" 
                  data-full-src="${agent.fullPortrait}" 
                  alt="${agent.displayName}" 
-                 class="modal-image" 
+                 class="modal-imageA" 
                  src="placeholder.jpg"> <!-- Placeholder aquí -->
             <h2 class="agent-name">${agent.displayName}</h2>
             <p class="agent-description">${agent.description}</p>
@@ -67,7 +67,7 @@ const showModal = (agent) => {
     `;
 
     // Cambia la imagen del placeholder a la imagen completa cuando el modal se muestre
-    const fullImage = modalBody.querySelector('.modal-image');
+    const fullImage = modalBody.querySelector('.modal-imageA');
     fullImage.onload = () => fullImage.classList.add('loaded'); // Clase para el estilo
     fullImage.src = fullImage.getAttribute('data-full-src');
 
