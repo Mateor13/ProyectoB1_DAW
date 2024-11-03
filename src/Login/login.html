@@ -7,10 +7,19 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <img src="./assets/img/orbit_11261951.png" alt="">
+    <img src="./assets/img/logo.png" alt="">
     <h1>Sube una Imagen para Detección Facial</h1>
-    <input type="file" id="imageFile" accept="image/*" ><br>
+    <input class="Fancy-file" type="file" id="imageFile" accept="image/*" ><br>
+    <label for="imageFile">
+        <span class="Fancy-file_Fancy-file-name">
+            <span>Ningún archivo seleccionado</span>
+        </span>
+        <span class="Fancy-file_Fancy-file-button">
+            Buscar archivo
+        </span>
+    </label>
     <button onclick="detectFace()">Detectar Rostro</button>
     <script src="./assets/js/recognition.js"></script>
+    <script src="./assets/js/Fancy-file.js"></script>
 </body>
 </html>
