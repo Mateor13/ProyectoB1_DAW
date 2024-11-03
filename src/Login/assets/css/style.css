@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #444444;
+    background-color: #222222;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,6 +46,10 @@ img {
     width: 150px;
 }
 
+p{
+    display:none;
+}
+
 .Fancy-file_Fancy-file-button {
     background: #ff4757 url(../img/folder.png) 4px center / 25px no-repeat;
     border: 1px solid #ff4757;
@@ -69,7 +73,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #283669;
 }
 
 @media (max-width: 600px) {

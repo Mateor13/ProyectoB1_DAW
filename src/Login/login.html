@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/img/imgVal.ico" type="image/x-icon">
     <title>Inicio de sesión</title>
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
     <img src="./assets/img/logo.png" alt="">
-    <h1>Sube una Imagen para Detección Facial</h1>
+    <h1>Sube una Imagen para Inicio de Sesión mediante Detección Facial</h1>
+
     <input class="Fancy-file" type="file" id="imageFile" accept="image/*" ><br>
     <label for="imageFile">
         <span class="Fancy-file_Fancy-file-name">
             <span>Ningún archivo seleccionado</span>
         </span>
         <span class="Fancy-file_Fancy-file-button">
-            Buscar archivo
+            Buscar imagen
         </span>
     </label>
+    <br>
+    <p></p>
     <button onclick="detectFace()">Detectar Rostro</button>
     <script src="./assets/js/recognition.js"></script>
     <script src="./assets/js/Fancy-file.js"></script>
