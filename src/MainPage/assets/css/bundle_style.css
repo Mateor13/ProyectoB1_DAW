@@ -1,8 +1,4 @@
-/* Contenedor principal de Bundles */
-#Bundles {
-    padding-left: 225px; /* Ajusta este valor según el diseño deseado */
-}
-
+/* Título de la sección */
 #Bundles h2 {
     width: 100%;
     text-align: center;
@@ -24,22 +20,25 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    width: 250px; /* Ajusta según lo necesario */
+    width: 300px; /* Ancho fijo para evitar cambios de diseño */
+    height: 250px; /* Altura fija para minimizar saltos de diseño */
     background-color: #444; /* Fondo oscuro */
     color: #fff; /* Texto en blanco */
     transition: transform 0.2s;
     text-align: center;
 }
 
+/* Efecto hover */
 .bundle-card:hover {
-    transform: scale(1.05); /* Efecto hover */
+    transform: scale(1.05);
 }
 
 /* Imagen dentro de cada bundle */
 .bundle-card img {
     border-radius: 8px;
-    max-width: 100%;
-    height: auto; /* Mantener proporción */
+    width: 260px;
+    height: 130px; /* Altura fija para evitar CLS */
+    object-fit: cover; /* Para mantener la proporción sin distorsionar */
     margin-top: 10px;
 }
 
@@ -55,6 +54,8 @@
     font-size: 0.9em;
     line-height: 1.4;
     margin: 5px 0;
+    max-height: 50px; /* Limitar altura para evitar cambios de diseño */
+    overflow: hidden; /* Ocultar el exceso de texto si es necesario */
 }
 
 /* Media queries para responsividad */
@@ -73,6 +74,7 @@
     .bundle-card {
         width: 100%; /* Ancho completo en pantallas pequeñas */
         padding: 10px; /* Menor padding para mejorar el espacio */
+        height: auto; /* Permitir altura automática en pantallas pequeñas */
     }
 
     .bundle-card h3 {

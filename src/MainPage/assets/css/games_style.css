@@ -36,8 +36,8 @@
 /* Imagen dentro de cada game-mode */
 .game-mode img {
     border-radius: 8px;
-    max-width: 100%;
-    height: auto; /* Mantener proporción */
+    max-width:200px;
+    height: 200px; /* Mantener proporción */
     margin-top: 10px;
 }
 

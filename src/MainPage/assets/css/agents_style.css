@@ -2,9 +2,9 @@
 #list-agents {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centra las cards */
+    justify-content: center;
     margin: 20px 0;
-    padding: 0 10px; /* Espaciado en los lados */
+    padding: 0 10px;
 }
 
 /* Títulos de sección */
@@ -17,57 +17,58 @@
 
 /* Estilo de las cards */
 .card {
-    background-color: #333; /* Fondo de la card */
+    background-color: #333;
     border-radius: 10px;
     margin: 10px;
-    width: 220px; /* Ancho fijo para las cards */
+    width: 220px; /* Establecer ancho fijo para evitar cambios de diseño */
     text-align: center;
-    overflow: hidden; /* Oculta contenido que sobresale */
-    transition: transform 0.2s; /* Efecto de hover */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .card:hover {
-    transform: scale(1.05); /* Efecto al pasar el mouse */
+    transform: scale(1.05);
 }
 
 /* Imagen de la card */
 .card-img-top {
-    width: 100%;
-    height: auto; /* Mantiene proporción de la imagen */
+    width: 150px;
+    height: 150px; /* Definir altura fija para prevenir cambios de tamaño */
+    object-fit: cover; /* Asegurar que la imagen ocupe el contenedor sin distorsión */
 }
 
 /* Estilo del texto en la card */
 .card-title {
-    font-size: 1.2em; /* Aumenta el tamaño del título */
+    font-size: 1.2em;
     margin: 10px 0;
-    color: #ff4757; /* Color del texto del título */
+    color: #ff4757;
 }
 
 .card-text {
-    font-size: 0.9em; /* Ajuste de tamaño de texto */
-    padding: 0 10px; /* Espaciado interno */
+    font-size: 0.9em;
+    padding: 0 10px;
 }
 
 /* Estilo del botón */
 .btn-primary {
-    background-color: #ff4757; /* Color del botón */
-    color: white; /* Texto en blanco */
+    background-color: #ff4757;
+    color: white;
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
     cursor: pointer;
-    font-size: 0.9em; /* Tamaño del texto del botón */
-    transition: background-color 0.3s; /* Transición suave */
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #ff6b81; /* Color del botón al pasar el mouse */
+    background-color: #ff6b81;
 }
 
 /* Estilo del modal */
 #agentModal {
-    display: none; /* Ocultar por defecto */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -78,33 +79,36 @@
     z-index: 1000;
     padding: 20px;
     box-sizing: border-box;
-    overflow: auto; /* Permite desplazamiento si el contenido es largo */
+    overflow: auto;
 }
 
 /* Contenido del modal */
 .modal-content {
-    background: #444; /* Fondo del modal */
+    background-color: #333;
+    margin: 8% auto; /* Margen superior menor para centrar */
     padding: 20px;
-    border-radius: 5px;
-    max-width: 800px;
-    margin: 50px auto; /* Centrando el modal */
-    position: relative; /* Para posicionar el botón de cierre */
+    border: 1px solid #888;
+    width: 80%;
+    max-height: 85%; /* Limitar altura para responsividad */
+    overflow-y: auto;
+    position: relative;
+    border-radius: 10px;
 }
 
 /* Imagen del modal */
-.modal-image {
-    max-width: 100%; /* Asegura que la imagen no se salga del modal */
-    height: auto; /* Mantiene la proporción de la imagen */
+.modal-imageA {
+    width: 100%;
+    height: 700px; /* Definir altura fija para consistencia de layout */
+    object-fit: contain; /* Evitar distorsión de imagen */
     border-radius: 5px;
-    margin-bottom: 15px; /* Espacio debajo de la imagen */
-    object-fit: contain; /* Ajusta la imagen dentro del contenedor manteniendo la proporción */
+    margin-bottom: 15px;
 }
 
 /* Espaciado entre imágenes en el modal */
 .modal-images {
     display: flex;
-    flex-direction: column; /* Coloca imágenes verticalmente */
-    gap: 15px; /* Espacio entre las imágenes */
+    flex-direction: column;
+    gap: 15px;
 }
 
 /* Botón de cerrar modal */
@@ -121,73 +125,67 @@
 
 /* Estilos para el texto del modal */
 .modal-body h2 {
-    font-size: 2em; /* Aumentar el tamaño del título */
-    color: #ff4757; /* Color del título */
-    margin: 10px 0; /* Espaciado */
+    font-size: 2em;
+    color: #ff4757;
+    margin: 10px 0;
 }
 
 .modal-body p {
-    font-size: 1em; /* Tamaño del texto */
-    line-height: 1.5; /* Espaciado entre líneas */
-    margin-bottom: 10px; /* Espacio inferior */
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 10px;
 }
 
 .modal-body h4 {
-    font-size: 1.2em; /* Tamaño del subtítulo */
-    color: #ff6b81; /* Color del subtítulo */
+    font-size: 1.2em;
+    color: #ff6b81;
 }
 
 /* Estilo de la lista de habilidades */
 .modal-body ul {
-    list-style-type: disc; /* Marcadores en la lista */
-    padding-left: 20px; /* Espaciado a la izquierda */
+    list-style-type: disc;
+    padding-left: 20px;
 }
 
 .modal-body li {
-    margin-bottom: 5px; /* Espaciado entre elementos de la lista */
+    margin-bottom: 5px;
 }
 
 /* Estilo para el nombre del agente */
 .agent-name {
-    font-size: 2.5em; /* Aumenta el tamaño del nombre */
-    color: #ff4757; /* Color llamativo para el nombre del agente */
-    margin: 10px 0; /* Espaciado */
+    font-size: 2.5em;
+    color: #ff4757;
+    margin: 10px 0;
 }
 
 /* Estilo de la descripción del agente */
 .agent-description {
-    font-size: 1em; /* Tamaño del texto normal */
-    line-height: 1.5; /* Espaciado entre líneas */
-    margin-bottom: 10px; /* Espacio inferior */
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 10px;
 }
 
 /* Estilo del rol */
 .agent-role {
-    font-size: 1.5em; /* Aumenta el tamaño del rol */
-    color: #ff6b81; /* Color para el rol */
-    margin: 10px 0; /* Espaciado */
+    font-size: 1.5em;
+    color: #ff6b81;
+    margin: 10px 0;
 }
 
-/* Estilo de la descripción del rol */
-.role-description {
-    font-size: 1em; /* Tamaño del texto normal */
-    margin-bottom: 10px; /* Espacio inferior */
-}
-
-/* Estilo de las habilidades */
+/* Estilo de la lista de habilidades */
 .agent-abilities {
-    font-size: 1.5em; /* Aumenta el tamaño de las habilidades */
-    color: #ff6b81; /* Color para las habilidades */
+    font-size: 1.5em;
+    color: #ff6b81;
 }
 
 /* Estilo de la lista de habilidades */
 .ability-list {
-    list-style-type: disc; /* Marcadores en la lista */
-    padding-left: 20px; /* Espaciado a la izquierda */
+    list-style-type: disc;
+    padding-left: 20px;
 }
 
 .ability-list li {
-    margin-bottom: 5px; /* Espaciado entre habilidades */
+    margin-bottom: 5px;
 }
 
 /* Estilo para los botones de rol */
@@ -197,63 +195,63 @@
 }
 
 .role-button {
-    background-color: #ff4757; /* Color del botón */
-    color: white; /* Texto en blanco */
+    background-color: #ff4757;
+    color: white;
     border: none;
     border-radius: 5px;
-    padding: 10px 15px;
+    padding: 10px;
     cursor: pointer;
-    margin: 0 5px; /* Espaciado entre botones */
-    transition: background-color 0.3s; /* Transición suave */
+    font-size: 1em;
 }
 
 .role-button:hover {
-    background-color: #ff6b81; /* Color al pasar el mouse */
+    background-color: #ff6b81;
 }
+
 
 /* Media queries para responsividad */
 @media (max-width: 768px) {
     .card {
-        width: 100%; /* Ancho completo en móviles */
-        margin: 10px 0; /* Espaciado vertical entre cards */
+        width: 100%;
+        margin: 10px 0;
     }
 
     #list-agents {
-        flex-direction: column; /* Colocar cards verticalmente en móviles */
-        align-items: center; /* Centra las cards verticalmente */
+        flex-direction: column;
+        align-items: center;
     }
 
     .modal-content {
-        max-width: 90%; /* Ampliar el ancho del modal */
+        max-width: 90%;
     }
 }
 
 @media (max-width: 480px) {
     .card-title {
-        font-size: 1.1em; /* Ajuste del tamaño del título */
+        font-size: 1.1em;
     }
 
     .card-text {
-        font-size: 0.8em; /* Ajuste de tamaño de texto */
+        font-size: 0.8em;
     }
 
     .modal-body h2 {
-        font-size: 1.8em; /* Tamaño del título en el modal */
+        font-size: 1.8em;
     }
 
     .modal-body h4 {
-        font-size: 1.1em; /* Tamaño del subtítulo en el modal */
+        font-size: 1.1em;
     }
 
     .agent-name {
-        font-size: 2em; /* Tamaño del nombre del agente */
+        font-size: 2em;
     }
 
     .agent-role {
-        font-size: 1.3em; /* Tamaño del rol */
+        font-size: 1.3em;
     }
 
     .agent-abilities {
-        font-size: 1.3em; /* Tamaño de las habilidades */
+        font-size: 1.3em;
     }
 }

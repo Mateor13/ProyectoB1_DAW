@@ -1,10 +1,13 @@
-/* Estilo para el contenedor de mapas */
+/* Contenedor de las tarjetas de mapas */
 #list-maps {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Espacio alrededor de las tarjetas */
+    justify-content: center;
+    gap: 20px; /* Espacio uniforme entre tarjetas */
+    padding: 10px;
 }
 
+/* Título de la sección de mapas */
 #Maps h2 {
     width: 100%;
     text-align: center;
@@ -12,116 +15,128 @@
     color: #fff;
 }
 
-/* Estilo para las tarjetas de mapas */
+/* Tarjetas de mapas */
 .map-card {
+    background-color: #333;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     margin: 10px;
-    width: 200px; /* Ancho fijo de la tarjeta */
+    width: 220px; /* Ancho fijo para uniformidad */
+    height: 300px; /* Altura fija para evitar cambios de diseño */
     cursor: pointer;
     text-align: center;
-    transition: transform 0.2s;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .map-card:hover {
     transform: scale(1.05);
 }
 
-/* Estilo para las imágenes de los mapas en las tarjetas */
+/* Imagen de la tarjeta de mapa */
 .map-image {
     width: 100%;
-    height: auto;
+    height: 150px; /* Altura fija para evitar CLS */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    object-fit: cover; /* Para mantener la relación de aspecto sin distorsionar */
 }
-
 
 /* Estilo para el modal */
 .modal {
     display: none; /* Oculto por defecto */
-    position: fixed; /* Mantener el modal en posición */
-    z-index: 1000; /* Enfrente de otros elementos */
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Alto completo */
-    overflow: auto; /* Desplazamiento si es necesario */
-    background-color: rgb(0, 0, 0); /* Fondo negro */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
     background-color: rgba(0, 0, 0, 0.9); /* Fondo negro con transparencia */
 }
 
-/* Estilo del contenido del modal */
+/* Contenido del modal */
 .modal-content {
-    background-color: #333; /* Fondo del modal */
-    margin: 15% auto; /* Margen superior y centrado */
-    padding: 20px; /* Espaciado interno */
-    border: 1px solid #888; /* Borde */
-    width: 80%; /* Ancho del modal */
-    max-height: 80%; /* Limitar la altura */
-    overflow-y: auto; /* Scroll si es necesario */
-    position: relative; /* Posicionamiento relativo para el contenido */
+    background-color: #333;
+    margin: 8% auto; /* Margen superior menor para centrar */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-height: 85%; /* Limitar altura para responsividad */
+    overflow-y: auto;
+    position: relative;
+    border-radius: 10px;
 }
 
-.banner-container {
+/* Contenedor para las imágenes en el modal */
+.map-images-container {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
-.modal-image,
+/* Imagen en el modal */
+.modal-image {
+    width: 100%;
+    height: 300px; /* Definir altura fija para evitar cambios de diseño */
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* Iconos adicionales en el modal */
 .map-list-icon,
 .map-list-icon-tall,
 .map-premier-bg {
-    max-width: 100%; /* Mantener dentro del contenedor */
-    height: auto; /* Mantener la proporción */
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
-.map-images-container {
-    display: flex;
-    flex-direction: column; /* Coloca imágenes en columna */
-    align-items: center;
-    gap: 10px; /* Espaciado entre las imágenes */
-}
-
-/* Estilo del cierre del modal */
+/* Estilo del botón de cerrar modal */
 .close {
-    color: #aaa; /* Color del texto */
-    float: right; /* A la derecha */
-    font-size: 28px; /* Tamaño */
-    font-weight: bold; /* Negrita */
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
 }
 
-.close:hover,
-.close:focus {
-    color: white; /* Cambiar color al pasar el mouse */
-    text-decoration: none; /* Sin subrayado */
-    cursor: pointer; /* Cambiar cursor */
+.close:hover {
+    color: white;
 }
 
 /* Media queries para responsividad */
 @media (max-width: 768px) {
     .map-card {
-        width: 90%; /* Ancho completo en móviles */
-        margin: 10px 0; /* Espaciado vertical entre tarjetas */
+        width: 80%; /* Reducir ancho en tabletas */
     }
 
     #list-maps {
-        flex-direction: column; /* Colocar tarjetas verticalmente en móviles */
-        align-items: center; /* Centrar las tarjetas */
+        flex-direction: column;
+        align-items: center;
     }
 
     .modal-content {
-        width: 95%; /* Ampliar el ancho del modal en móviles */
+        width: 90%;
+        padding: 15px; /* Reducir padding en pantallas más pequeñas */
     }
 }
 
 @media (max-width: 480px) {
     .map-card {
-        width: 100%; /* Ancho completo en pantallas más pequeñas */
+        width: 100%; /* Ancho completo en pantallas pequeñas */
     }
 
     .modal-content {
-        padding: 15px; /* Espaciado interno menor */
+        width: 95%;
+        padding: 10px;
     }
 
     .close {
-        font-size: 24px; /* Tamaño de texto menor para el botón de cerrar */
+        font-size: 24px; /* Tamaño de texto menor en móvil */
     }
 }
