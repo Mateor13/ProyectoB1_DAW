@@ -10,15 +10,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Servir archivos estáticos
-app.use('/', express.static(path.join(__dirname, './Login')));
-app.use('/Inicio', express.static(path.join(__dirname, 'MainPage')));
+app.use('/', express.static(path.join(__dirname, './src/Login')));
+app.use('/Inicio', express.static(path.join(__dirname, './src/MainPage')));
 
 // Ruta principal
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './Login/login.html'));
+    res.sendFile(path.join(__dirname, './src/Login/login.html'));
 });
 app.get('/Inicio', (req, res) => {
-    res.sendFile(path.join(__dirname, './MainPage/index.html'));
+    res.sendFile(path.join(__dirname, './src/MainPage/index.html'));
 });
 // Iniciar el servidor
 app.listen(PORT, () => {
