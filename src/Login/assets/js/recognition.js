@@ -33,9 +33,14 @@ async function detectFace() {
             advertencia.style.display = "block";
             advertencia.style.color = "#ff4757";
             advertencia.innerHTML = "Detección exitosa. Redirigiendo...";
+            console.log(result.age);
             setTimeout(() => {
             window.location.href = "/Inicio"}, 2000);
-        } else {
+        } else if(result.error_message == "IMAGE_ERROR_UNSUPPORTED_FORMAT: image_file"){
+            advertencia.style.display = "block";
+            advertencia.style.color = "#ff4757";
+            advertencia.innerHTML = "El formato de la imagen no es compatible. Por favor, intenta con el formato PNG o JPG.";   
+        }else{
             advertencia.style.display = "block";
             advertencia.style.color = "#ff4757";
             advertencia.innerHTML = "No se detectó un rostro en la imagen. Por favor, intenta de nuevo.";

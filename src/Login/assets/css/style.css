@@ -76,7 +76,10 @@ button:hover {
     background-color: #283669;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 2037px) {
+    img{
+        width: 20%;
+    }
     h1 {
         font-size: 24px;
     }
@@ -91,7 +94,11 @@ button:hover {
         width: 100%;
     }
 }
-
+@media (max-width: 845px) {
+    img{
+        width: 30%;
+    }
+}
 @media (min-width: 601px) {
     h1 {
         font-size: 32px;
