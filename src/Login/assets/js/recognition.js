@@ -33,7 +33,6 @@ async function detectFace() {
             advertencia.style.display = "block";
             advertencia.style.color = "#ff4757";
             advertencia.innerHTML = "Detección exitosa. Redirigiendo...";
-            console.log(result.age);
             setTimeout(() => {
             window.location.href = "/Inicio"}, 2000);
         } else if(result.error_message == "IMAGE_ERROR_UNSUPPORTED_FORMAT: image_file"){
